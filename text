@@ -1,1 +1,96 @@
-
+import re
+import statistics
+:)def count_characters(text
+# محاسبه تعداد تکرار هر حرف و عدد در متن
+}{ = char_count
+:for char in text
+:)(if char.isalnum
+char_count[char] = char_count.get(char, 0) + 1
+return char_count
+:)def count_words(text
+# محاسبه تعداد واژگان و تعداد تکرار هر کدام
+)(words = text.split
+)word_count = len(words
+}{ = word_frequency
+:for word in words
+word_frequency[word] = word_frequency.get(word, 0) + 1
+return word_count, word_frequency
+:)def count_sentences(text
+# محاسبه تعداد جمالت
+)sentences = re.split(r'[.!?]+', text
+sentence_count = len(sentences) - 1 # Exclude last empty string after the last punctuation
+mark
+return sentence_count
+:)def count_paragraphs(text
+# محاسبه تعداد پاراگرافها
+)'paragraphs = text.split('\n\n
+)paragraph_count = len(paragraphs
+return paragraph_count
+:)def count_vowels_consonants(text
+# محاسبه تعداد حروف صدادار و بیصدا
+'vowels = 'aeiouAEIOU
+'consonants = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ
+)vowel_count = sum(1 for char in text if char in vowels
+)consonant_count = sum(1 for char in text if char in consonants
+return vowel_count, consonant_count
+:)def count_constants(text
+# محاسبه تعداد حروف constant
+)'constant_count = sum(1 for char in text if char.isalpha() and char.lower() not in 'aeiou
+return constant_count
+:)def calculate_statistics(data
+# محاسبه میانگین و واریانس
+)mean = statistics.mean(data
+)variance = statistics.variance(data
+return mean, variance
+:)(def main
+text = input
+)"لطفا متن خود را وارد کنید: "( ً
+)char_count = count_characters(text
+)word_count, word_frequency = count_words(text
+)sentence_count = count_sentences(text
+)paragraph_count = count_paragraphs(text
+)vowel_count, consonant_count = count_vowels_consonants(text
+)constant_count = count_constants(text
+print"(تعداد تکرار هر حرف و عدد:"(
+:))(for char, count in sorted(char_count.items
+)"}print(f"{char}: {count
+n("\printتعداد واژگان و تعداد تکرار هر کدام:"(
+)"}word_count{ :واژگان تعداد"print(f
+:))(for word, frequency in sorted(word_frequency.items
+)"}print(f"{word}: {frequency
+)sentence_count ,":جمالت تعدادprint("\n
+)paragraph_count ,":پاراگرافها تعداد)"print
+n("\printتعداد حروف صدادار و بیصدا:"(
+)"}vowel_count{ :صدادار حروف تعداد"print(f
+)"}consonant_count{ :بیصدا حروف تعداد"print(f
+)constant:", constant_count حروف تعدادprint("\n
+Calculate statistics for vowels and consonants in sentences, paragraphs, and the whole #
+text
+vowels_per_sentence = [sum(1 for char in sentence if char in 'aeiouAEIOU') for sentence
+])in re.split(r'[.!?]+', text
+consonants_per_sentence = [sum(1 for char in sentence if char.isalpha() and char.lower()
+])not in 'aeiou') for sentence in re.split(r'[.!?]+', text
+vowels_per_paragraph = [sum(1 for char in paragraph if char in 'aeiouAEIOU') for
+])'paragraph in text.split('\n\n
+consonants_per_paragraph = [sum(1 for char in paragraph if char.isalpha() and
+])'char.lower() not in 'aeiou') for paragraph in text.split('\n\n
+])'vowels_in_text = [sum(1 for char in text if char in 'aeiouAEIOU
+consonants_in_text = [sum(1 for char in text if char.isalpha() and char.lower() not in
+])''aeiou
+n("\printمیانگین و واریانس تعداد حروف صدادار و بیصدا:"(
+print"(در هر جمله:"(
+)]calculate_statistics(vowels_per_sentence)[0 ,":صدادار حروف تعداد میانگین)"print
+)]calculate_statistics(vowels_per_sentence)[1 ,":صدادار حروف تعداد واریانس)"print
+)]calculate_statistics(consonants_per_sentence)[0 ,":بیصدا حروف تعداد میانگین)"print
+)]calculate_statistics(consonants_per_sentence)[1 ,":بیصدا حروف تعداد واریانس)"print
+n("\printدر هر پاراگراف:"(
+)]calculate_statistics(vowels_per_paragraph)[0 ,":صدادار حروف تعداد میانگین)"print
+)]calculate_statistics(vowels_per_paragraph)[1 ,":صدادار حروف تعداد واریانس)"print
+)]calculate_statistics(consonants_per_paragraph)[0 ,":بیصدا حروف تعداد میانگین)"print
+)]calculate_statistics(consonants_per_paragraph)[1 ,":بیصدا حروف تعداد واریانس)"print
+n("\printدر کل متن:"(
+)]calculate_statistics(vowels_in_text)[0 ,":صدادار حروف تعداد میانگین)"print
+)]calculate_statistics(vowels_in_text)[1 ,":صدادار حروف تعداد واریانس)"print
+)]calculate_statistics(consonants_in_text)[0 ,":بیصدا حروف تعداد میانگین)"print
+)]calculate_statistics(consonants_in_text)[1 ,":بیصدا حروف تعداد واریانس)"print
+)(main
